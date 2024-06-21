@@ -88,6 +88,7 @@ export default function MenuButton() {
     event: React.MouseEvent<HTMLElement>,
     newAlignment: string | null,
   ) => {
+    if (newAlignment === null) return;
     setAlignment(newAlignment);
   };
 

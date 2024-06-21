@@ -7,6 +7,7 @@ import { useSocket } from './hooks/socketHook';
 import MenuButton from './components/buttons/MenuButton';
 import PizzaIcon from './assets/twemoji/PizzaIcon';
 import TabIcon from './components/buttons/TabIcon';
+import ItemCard from './components/cards/ItemCard';
 
 function Hello() {
   useSocket({
@@ -24,6 +25,7 @@ function Hello() {
           <MenuButton/>
         </Box>
         <TabIcon/>
+        <ItemCard/>
       </Box>
     </>
   );

@@ -21,30 +21,32 @@ const menu = [
     icon: <BooksIcon />,
     label: 'Tout',
     value: 'all',
-    subvalue : '59 articles',
-  }, {
+    subvalue: '59 articles',
+  },
+  {
     icon: <PlateIcon />,
     label: 'Menus',
     value: 'menus',
-    subvalue : '3 articles',
-  }, {
+    subvalue: '3 articles',
+  },
+  {
     icon: <PizzaIcon />,
     label: 'Pizzas',
     value: 'pizzas',
-    subvalue : '20 articles',
-  }, {
+    subvalue: '20 articles',
+  },
+  {
     icon: <DrinkIcon />,
     label: 'Boissons',
     value: 'drinks',
-    subvalue : '30 articles',
+    subvalue: '30 articles',
   },
   {
     icon: <DessertIcon />,
     label: 'Desserts',
     value: 'desserts',
-    subvalue : '6 articles',
+    subvalue: '6 articles',
   },
-
 ];
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
@@ -94,6 +96,7 @@ export default function TabIcon() {
     event: React.MouseEvent<HTMLElement>,
     newAlignment: string | null,
   ) => {
+    if(newAlignment === null) return
     setAlignment(newAlignment);
   };
 
@@ -127,7 +130,7 @@ export default function TabIcon() {
             height={34}
             bgcolor="#FFFFFF"
             borderRadius={35}
-            border={'1px solid #70787D'}
+            border="1px solid #70787D"
             display="flex"
             justifyContent="center"
             alignItems="center"
