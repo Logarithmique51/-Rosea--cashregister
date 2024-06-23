@@ -96,7 +96,7 @@ export default function TabIcon() {
     event: React.MouseEvent<HTMLElement>,
     newAlignment: string | null,
   ) => {
-    if(newAlignment === null) return
+    if (newAlignment === null) return;
     setAlignment(newAlignment);
   };
 
@@ -109,7 +109,7 @@ export default function TabIcon() {
       aria-label="text alignment"
     >
       {menu.map((item) => (
-        <ToggleButton value={item.value} aria-label="centered">
+        <ToggleButton value={item.value} key={item.value} aria-label="centered">
           <Box display="flex">
             <Box display="flex" flexDirection="column" alignItems="start">
               <Typography

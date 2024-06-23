@@ -25,7 +25,12 @@ function Hello() {
           <MenuButton/>
         </Box>
         <TabIcon/>
-        <ItemCard/>
+        <Box flex={1} display={'flex'} flexWrap={'wrap'} gap={'25px'}>
+            <ItemCard/>
+            <ItemCard/>
+            <ItemCard/>
+            <ItemCard/>
+        </Box>
       </Box>
     </>
   );

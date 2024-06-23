@@ -101,7 +101,7 @@ export default function MenuButton() {
       aria-label="text alignment"
     >
       {menu.map((item) => (
-        <ToggleButton value={item.value} aria-label="centered">
+        <ToggleButton value={item.value} key={item.value} aria-label="centered">
           {item.icon}
           <Typography fontSize={14} fontWeight="bold" letterSpacing={0.5}>
             {item.label}
