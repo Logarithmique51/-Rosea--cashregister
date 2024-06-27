@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Card,
   FormControl,
   InputBase,
@@ -14,6 +15,7 @@ import {
 import { useState } from 'react';
 import Pizza from '../../assets/pizza/americaine.png';
 import CountInput from '../input/CountInput';
+import CheckIcon from '../../assets/CheckIcon';
 
 const CustomInput = styled(InputBase)(() => ({
   '& .MuiInputBase-input': {
@@ -98,15 +100,30 @@ export default function ItemCard() {
               color="secondary"
               input={<CustomInput />}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              <MenuItem value={10}>22 cm</MenuItem>
+              <MenuItem value={20}>35 cm</MenuItem>
             </Select>
           </FormControl>
         </Box>
-        <Box>
-          <CountInput value={0}/>
-
+        <Box display="flex" justifyContent="">
+          <CountInput value={0} />
+          <Box flex={1} display="flex" justifyContent="end">
+            <Button
+              variant="outlined"
+              sx={{
+                borderRadius: '10px',
+                color: '#0C6780',
+                borderColor: '#0C6780',
+                fontWeight: 'regular',
+                "&:hover":{
+                  borderColor:"#0c6780"
+                }
+              }}
+              endIcon={<CheckIcon color={"#0C6780"} height={25}/>}
+            >
+              Ajouter
+            </Button>
+          </Box>
         </Box>
       </Box>
       <Box />

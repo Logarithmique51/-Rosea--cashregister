@@ -7,10 +7,15 @@ export default function CountInput({ value = 0 }) {
   const [count, setCount] = useState(value);
 
   return (
-    <Box display="flex" justifyContent="space-between" alignItems="center">
+    <Box
+      display="flex"
+      justifyContent="space-between"
+      alignItems="center"
+      columnGap={2}
+    >
       <IconButton
         sx={{
-          backgroundColor: '#FEFAF5',
+          backgroundColor: 'transparent',
           border: '1px solid #C0C8CC',
           '&:hover': {
             opacity: 0.7,
@@ -25,7 +30,7 @@ export default function CountInput({ value = 0 }) {
       <IconButton
         sx={{
           backgroundColor: '#0C6780',
-          color: '#FEFAF5',
+          color: '#F5FAFD',
           '&:hover': {
             opacity: 0.7,
             backgroundColor: '#0C6780',

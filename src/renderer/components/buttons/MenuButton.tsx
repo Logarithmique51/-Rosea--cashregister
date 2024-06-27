@@ -79,7 +79,7 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
   },
 }));
 
-export default function MenuButton() {
+export default function MenuButton({sx}) {
   const [alignment, setAlignment] = React.useState<string | null>(
     menu[0].value,
   );
@@ -94,6 +94,7 @@ export default function MenuButton() {
 
   return (
     <StyledToggleButtonGroup
+      sx={sx}
       size="small"
       value={alignment}
       exclusive

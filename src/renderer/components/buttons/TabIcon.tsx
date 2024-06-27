@@ -56,7 +56,6 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
     width: '100%',
   },
   [`& .${toggleButtonGroupClasses.grouped}`]: {
-    margin: theme.spacing(0.5),
     marginRight: 20,
     border: '1px solid #40484C',
     paddingLeft: 15,

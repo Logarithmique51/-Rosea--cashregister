@@ -1,10 +1,45 @@
+html,body{
+  background-color: #F5FAFD !important;
+  height: 100%;
+  width: 100%;
+}
+
+*{
+  /* border: 1px solid red; */
+}
+
 body{
-  height: 100vh;
-  background-color: #FEFAF5 !important;
+  overflow: hidden;
 }
 
 #root{
   height: 100%;
+  width: 100%;
+  max-height: 100%;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width:thin;
+    scrollbar-color: #0C6780 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #0C6780;
+    border-radius: 4px;
+    border: 1px #0C6780 solid;
+
+  }

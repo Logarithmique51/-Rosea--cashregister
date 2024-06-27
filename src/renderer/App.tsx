@@ -9,28 +9,53 @@ import PizzaIcon from './assets/twemoji/PizzaIcon';
 import TabIcon from './components/buttons/TabIcon';
 import ItemCard from './components/cards/ItemCard';
 
-function Hello() {
-  useSocket({
-    type: 'NEW_ORDER',
-    callBack: () => {
-      console.log('ok');
-    },
-  });
+// function Hello() {
+//   // useSocket({
+//   //   type: 'NEW_ORDER',
+//   //   callBack: () => {
+//   //     console.log('ok');
+//   //   },
+//   // });
 
+function Hello() {
   return (
     <>
       <NavBar />
-      <Box flexGrow={1}>
-        <Box borderBottom={"1px solid #C0C8CC"}>
-          <MenuButton/>
+
+      {/* main content */}
+      <Box height="calc(100% - 80px)" width="100%" display="flex">
+        <Box
+          maxWidth={1450}
+          height="100%"
+          width="100%"
+          display="flex"
+          flexDirection="column"
+        >
+          <MenuButton
+            sx={{ borderBottom: '1px solid #C0C8CC', borderRadius: 0 }}
+          />
+          <TabIcon />
+          <Box
+            p={3}
+            pt={0}
+            height="100%"
+            display="flex"
+            gap="25px"
+            flexWrap="wrap"
+            maxHeight="100%"
+            overflow="auto"
+          >
+            <ItemCard />
+            <ItemCard />
+            <ItemCard />
+            <ItemCard />
+            <ItemCard />
+            <ItemCard />
+            <ItemCard />
+            <ItemCard />
+          </Box>
         </Box>
-        <TabIcon/>
-        <Box flex={1} display={'flex'} flexWrap={'wrap'} gap={'25px'}>
-            <ItemCard/>
-            <ItemCard/>
-            <ItemCard/>
-            <ItemCard/>
-        </Box>
+        <Box flex={1} borderLeft="1px solid #C0C8CC" />
       </Box>
     </>
   );
