@@ -21,14 +21,11 @@ body{
   flex-direction: column;
 }
 
-/* ===== Scrollbar CSS ===== */
-  /* Firefox */
   * {
     scrollbar-width:thin;
     scrollbar-color: #0C6780 #ffffff;
   }
 
-  /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
     width: 10px;
   }
@@ -39,7 +36,7 @@ body{
 
   *::-webkit-scrollbar-thumb {
     background-color: #0C6780;
-    border-radius: 4px;
+    /* border-radius: 4px; */
     border: 1px #0C6780 solid;
 
   }

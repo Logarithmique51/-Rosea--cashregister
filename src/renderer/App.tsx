@@ -8,6 +8,7 @@ import MenuButton from './components/buttons/MenuButton';
 import PizzaIcon from './assets/twemoji/PizzaIcon';
 import TabIcon from './components/buttons/TabIcon';
 import ItemCard from './components/cards/ItemCard';
+import BasicPill from './components/pills/BasicPill';
 
 // function Hello() {
 //   // useSocket({
@@ -55,7 +56,17 @@ function Hello() {
             <ItemCard />
           </Box>
         </Box>
-        <Box flex={1} borderLeft="1px solid #C0C8CC" />
+        <Box
+          flex={1}
+          minWidth={350}
+          display="flex"
+          flexDirection="column"
+          maxHeight="100%"
+          borderLeft="1px solid #C0C8CC"
+          p={"20px"}
+        >
+          <BasicPill/>
+        </Box>
       </Box>
     </>
   );
