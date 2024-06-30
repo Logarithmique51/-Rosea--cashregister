@@ -28,15 +28,19 @@ body{
 
   *::-webkit-scrollbar {
     width: 10px;
+
   }
 
   *::-webkit-scrollbar-track {
-    background: #ffffff;
+    background: #0c678044;
+    /* border-radius: 4px; */
+    /* margin-bottom: 10px; */
+    /* margin-top: 10px; */
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: #0C6780;
+    background-color: #0c6780a6;
     /* border-radius: 4px; */
-    border: 1px #0C6780 solid;
+    border: 1px #0c6780a6 solid;
 
   }

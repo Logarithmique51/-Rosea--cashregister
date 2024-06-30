@@ -51,8 +51,7 @@ const menu = [
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
   [`&`]: {
-    padding: 20,
-    paddingInline: 25,
+    paddingTop: 10,
     width: '100%',
   },
   [`& .${toggleButtonGroupClasses.grouped}`]: {
@@ -100,46 +99,55 @@ export default function TabIcon() {
   };
 
   return (
-    <StyledToggleButtonGroup
-      size="small"
-      value={alignment}
-      exclusive
-      onChange={handleAlignment}
-      aria-label="text alignment"
-    >
-      {menu.map((item) => (
-        <ToggleButton value={item.value} key={item.value} aria-label="centered">
-          <Box display="flex">
-            <Box display="flex" flexDirection="column" alignItems="start">
-              <Typography
-                color="#171C1F"
-                fontSize={14}
-                fontWeight="bold"
-                letterSpacing={0.5}
-              >
-                {item.label}
-              </Typography>
-              <Typography color="#70787D" fontSize={11}>
-                {item.subvalue}
-              </Typography>
-            </Box>
-          </Box>
-          <Box
-            width={34}
-            height={34}
-            bgcolor="#FFFFFF"
-            borderRadius={35}
-            border="1px solid #70787D"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
+    <Box p="20px" paddingInline="25px">
+      <Typography fontSize={20} fontWeight="bold">
+        Catégories
+      </Typography>
+      <StyledToggleButtonGroup
+        size="small"
+        value={alignment}
+        exclusive
+        onChange={handleAlignment}
+        aria-label="text alignment"
+      >
+        {menu.map((item) => (
+          <ToggleButton
+            value={item.value}
+            key={item.value}
+            aria-label="centered"
           >
-            <Box width={16} height={16}>
-              {item.icon}
+            <Box display="flex">
+              <Box display="flex" flexDirection="column" alignItems="start">
+                <Typography
+                  color="#171C1F"
+                  fontSize={14}
+                  fontWeight="bold"
+                  letterSpacing={0.5}
+                >
+                  {item.label}
+                </Typography>
+                <Typography color="#70787D" fontSize={11}>
+                  {item.subvalue}
+                </Typography>
+              </Box>
             </Box>
-          </Box>
-        </ToggleButton>
-      ))}
-    </StyledToggleButtonGroup>
+            <Box
+              width={34}
+              height={34}
+              bgcolor="#FFFFFF"
+              borderRadius={35}
+              border="1px solid #70787D"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Box width={16} height={16}>
+                {item.icon}
+              </Box>
+            </Box>
+          </ToggleButton>
+        ))}
+      </StyledToggleButtonGroup>
+    </Box>
   );
 }

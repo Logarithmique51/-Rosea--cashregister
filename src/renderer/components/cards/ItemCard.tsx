@@ -4,16 +4,14 @@ import {
   Card,
   FormControl,
   InputBase,
-  InputLabel,
   MenuItem,
   Select,
   SelectChangeEvent,
   Typography,
-  makeStyles,
   styled,
 } from '@mui/material';
 import { useState } from 'react';
-import Pizza from '../../assets/pizza/americaine.png';
+import Pizza from '../../assets/pizza/lamericaine.png';
 import CountInput from '../input/CountInput';
 import CheckIcon from '../../assets/CheckIcon';
 
@@ -33,7 +31,15 @@ const CustomInput = styled(InputBase)(() => ({
   },
 }));
 
-export default function ItemCard() {
+interface Pizza {
+  id: string;
+  title: string;
+  price: number;
+  slug: string;
+  categorie: string;
+}
+
+export default function ItemCard({ item }: { item: Pizza }) {
   const [age, setAge] = useState(10);
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value);
@@ -56,7 +62,12 @@ export default function ItemCard() {
         border: '1px solid #C0C8CC',
       }}
     >
-      <img src={Pizza} height="auto" width={150} alt="product" />
+      <img
+        src={`http://localhost:3000/pizza/${item.slug}.png`}
+        height="auto"
+        width={150}
+        alt="product"
+      />
       <Box display="flex" flexDirection="column" rowGap="10px">
         <Box>
           <Typography
@@ -65,10 +76,10 @@ export default function ItemCard() {
             textTransform="uppercase"
             letterSpacing={0.5}
           >
-            La norvegienne
+            {item.title}
           </Typography>
           <Typography fontSize={16} fontWeight={800} color="#0C6780">
-            10.90€
+            {item.price}0€
           </Typography>
         </Box>
         <Box>
@@ -110,16 +121,17 @@ export default function ItemCard() {
           <Box flex={1} display="flex" justifyContent="end">
             <Button
               variant="outlined"
+              onClick={() => handleCall()}
               sx={{
                 borderRadius: '10px',
                 color: '#0C6780',
                 borderColor: '#0C6780',
                 fontWeight: 'regular',
-                "&:hover":{
-                  borderColor:"#0c6780"
-                }
+                '&:hover': {
+                  borderColor: '#0c6780',
+                },
               }}
-              endIcon={<CheckIcon color={"#0C6780"} height={25}/>}
+              endIcon={<CheckIcon color="#0C6780" height={25} />}
             >
               Ajouter
             </Button>

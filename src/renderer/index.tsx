@@ -11,4 +11,9 @@ window.electron.ipcRenderer.once('ipc-example', (arg) => {
   // eslint-disable-next-line no-console
   console.log(arg);
 });
+
+window.electron.ipcRenderer.once('getPizza', (arg) => {
+  // eslint-disable-next-line no-console
+  console.log("Pizza from renderer");
+});
 window.electron.ipcRenderer.sendMessage('ipc-example', ['ping']);

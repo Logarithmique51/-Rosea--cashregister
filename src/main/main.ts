@@ -15,6 +15,7 @@ import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 import './websockets/init';
+import axios from 'axios';
 
 class AppUpdater {
   constructor() {
@@ -30,6 +31,23 @@ ipcMain.on('ipc-example', async (event, arg) => {
   const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
   console.log(msgTemplate(arg));
   event.reply('ipc-example', msgTemplate('pong'));
+});
+
+interface Pizza {
+  id: string;
+  title: string;
+  price: number;
+  slug: string;
+  categorie: string;
+}
+
+ipcMain.on('getPizza', async (event) => {
+  try {
+    const response = await axios.get<Pizza[]>('http://localhost:3000/item');
+     event.reply('getPizza', response.data);
+  } catch (error) {
+    event.reply('getPizza', []);
+  }
 });
 
 if (process.env.NODE_ENV === 'production') {

@@ -1,6 +1,14 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import { Box, CssBaseline, ThemeProvider, Typography } from '@mui/material';
+import {
+  Box,
+  CircularProgress,
+  CssBaseline,
+  Divider,
+  ThemeProvider,
+  Typography,
+} from '@mui/material';
 import './App.css';
+import { useEffect, useState } from 'react';
 import { theme } from './theme/Theme';
 import NavBar from './components/Appbar';
 import { useSocket } from './hooks/socketHook';
@@ -8,7 +16,8 @@ import MenuButton from './components/buttons/MenuButton';
 import PizzaIcon from './assets/twemoji/PizzaIcon';
 import TabIcon from './components/buttons/TabIcon';
 import ItemCard from './components/cards/ItemCard';
-import BasicPill from './components/pills/BasicPill';
+import { BasicPill, TypePill } from './components/pills/BasicPill';
+import ItemPill from './components/pills/ItemPill';
 
 // function Hello() {
 //   // useSocket({
@@ -18,7 +27,31 @@ import BasicPill from './components/pills/BasicPill';
 //   //   },
 //   // });
 
+const myarray = new Array(10).fill(null);
+
+interface Pizza {
+  id: string;
+  title: string;
+  price: number;
+  slug: string;
+  categorie: string;
+}
+
 function Hello() {
+  const [items, setItems] = useState<Pizza[]>([]);
+
+  const callItem = () => {
+    window.electron.ipcRenderer.sendMessage('getPizza');
+  };
+
+  window.electron.ipcRenderer.on('getPizza', (args) => {
+    setItems(args);
+  });
+
+  useEffect(() => {
+    callItem();
+  }, []);
+
   return (
     <>
       <NavBar />
@@ -45,27 +78,69 @@ function Hello() {
             flexWrap="wrap"
             maxHeight="100%"
             overflow="auto"
+            // mr={6}
           >
-            <ItemCard />
-            <ItemCard />
-            <ItemCard />
-            <ItemCard />
-            <ItemCard />
-            <ItemCard />
-            <ItemCard />
-            <ItemCard />
+            {items.length < 1 ? (
+              <Box
+                flex={1}
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <CircularProgress size={100} />
+              </Box>
+            ) : (
+              items.map((value) => <ItemCard key={value.slug} item={value} />)
+            )}
           </Box>
         </Box>
         <Box
-          flex={1}
-          minWidth={350}
           display="flex"
           flexDirection="column"
           maxHeight="100%"
           borderLeft="1px solid #C0C8CC"
-          p={"20px"}
+          p="20px"
+          sx={{
+            transition: 'all 0.7s linear',
+            flex: {
+              xs: 0,
+              lg: 1,
+            },
+
+            minWidth: {
+              xs: 0,
+              lg: 350,
+            },
+          }}
         >
-          <BasicPill/>
+          <Box py="10px">
+            <Typography fontWeight="bold" fontSize="20px" letterSpacing={0.5}>
+              Détailles de la commande
+            </Typography>
+          </Box>
+          <Box py="10px" display="flex" flexDirection="column" rowGap="10px">
+            <BasicPill type={TypePill.Client} value="Invité" />
+            <BasicPill type={TypePill.Time} value="05/06/2024 à 19h03" />
+            <BasicPill type={TypePill.Order} value="#PON165940" />
+          </Box>
+          <Divider variant="fullWidth" sx={{ my: '20px' }} />
+          <Box display="flex" flexDirection="column" rowGap="20px">
+            <ItemPill label={"Pizza l'Américaine"} price="10.90" />
+            <Box
+              mx="auto"
+              my="18px"
+              width="50%"
+              borderBottom="1px solid #C0C8CC"
+            />
+            <ItemPill label="Pizza la Norvégienne" price="10.90" />
+            <Box
+              mx="auto"
+              my="18px"
+              width="50%"
+              borderBottom="1px solid #C0C8CC"
+            />
+            <ItemPill label="Pizza Reine" price="10.90" />
+          </Box>
         </Box>
       </Box>
     </>
