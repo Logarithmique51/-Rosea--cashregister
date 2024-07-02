@@ -140,5 +140,32 @@
       "slug": "la-kebab",
       "categorie": "pizza"
     }
+  ],
+  "menu" : [
+    {
+      "id": "1",
+      "title": "Menu 26",
+      "price": 12.90,
+      "slug": "menu-26"
+    },
+    {
+      "id": "2",
+      "title": "Menu 33",
+      "price": 16.90,
+      "slug": "menu-33"
+    },
+    {
+      "id": "3",
+      "title": "Menu Bambino",
+      "price": 5.90,
+      "slug": "menu-bambino"
+    },
+    {
+      "id": "4",
+      "title": "Menu Duo",
+      "price": 21.90,
+      "slug": "menu-duo"
+    }
+
   ]
 }
