@@ -90,7 +90,11 @@ function Hello() {
                 <CircularProgress size={100} />
               </Box>
             ) : (
-              items.map((value) => <ItemCard key={value.slug} item={value} />)
+              items.map((value,index) => (
+                <Box key={value.slug} sx={{ animation: `0.7s popup ${0.1+((index)/10)*2}s forwards`,scale:0 }}>
+                  <ItemCard key={value.slug} item={value} />
+                </Box>
+              ))
             )}
           </Box>
         </Box>

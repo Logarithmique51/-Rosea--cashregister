@@ -41,6 +41,8 @@ interface Pizza {
 
 export default function ItemCard({ item }: { item: Pizza }) {
   const [age, setAge] = useState(10);
+  const [count,setCount] = useState(1);
+
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value);
   };
@@ -62,12 +64,14 @@ export default function ItemCard({ item }: { item: Pizza }) {
         border: '1px solid #C0C8CC',
       }}
     >
-      <img
-        src={`http://localhost:3000/pizza/${item.slug}.png`}
-        height="auto"
-        width={150}
-        alt="product"
-      />
+      <Box height={120}>
+        <img
+          src={`http://localhost:3000/pizza/${item.slug}.png`}
+          height="100%"
+          width="auto"
+          alt="product"
+        />
+      </Box>
       <Box display="flex" flexDirection="column" rowGap="10px">
         <Box>
           <Typography
@@ -117,23 +121,35 @@ export default function ItemCard({ item }: { item: Pizza }) {
           </FormControl>
         </Box>
         <Box display="flex" justifyContent="">
-          <CountInput value={0} />
+          <CountInput value={count} setValue={setCount} min={1} max={10} />
           <Box flex={1} display="flex" justifyContent="end">
             <Button
               variant="outlined"
-              onClick={() => handleCall()}
+              // onClick={() => handleCall()}
               sx={{
                 borderRadius: '10px',
                 color: '#0C6780',
                 borderColor: '#0C6780',
                 fontWeight: 'regular',
+                transition: 'transform 0.2s ease-in-out',
+                display:'flex',
+                alignItems:'center',
+                justifyContent:'center',
+
                 '&:hover': {
                   borderColor: '#0c6780',
                 },
+                '&:active': {
+                  transform: 'scale(1.1)',
+                },
+
               }}
               endIcon={<CheckIcon color="#0C6780" height={25} />}
+
             >
-              Ajouter
+              <Typography>
+                Ajouter
+              </Typography>
             </Button>
           </Box>
         </Box>
