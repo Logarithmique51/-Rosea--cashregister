@@ -11,9 +11,9 @@ import {
   styled,
 } from '@mui/material';
 import { useState } from 'react';
-import Pizza from '../../assets/pizza/lamericaine.png';
 import CountInput from '../input/CountInput';
 import CheckIcon from '../../assets/CheckIcon';
+import Item from '../../../shared/interface/ItemInterface';
 
 const CustomInput = styled(InputBase)(() => ({
   '& .MuiInputBase-input': {
@@ -31,15 +31,8 @@ const CustomInput = styled(InputBase)(() => ({
   },
 }));
 
-interface Pizza {
-  id: string;
-  title: string;
-  price: number;
-  slug: string;
-  categorie: string;
-}
 
-export default function ItemCard({ item }: { item: Pizza }) {
+export default function ItemCard({ item }: { item: Item }) {
   const [age, setAge] = useState(10);
   const [count,setCount] = useState(1);
 

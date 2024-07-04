@@ -13,11 +13,11 @@ import { theme } from './theme/Theme';
 import NavBar from './components/Appbar';
 import { useSocket } from './hooks/socketHook';
 import MenuButton from './components/buttons/MenuButton';
-import PizzaIcon from './assets/twemoji/PizzaIcon';
 import TabIcon from './components/buttons/TabIcon';
 import ItemCard from './components/cards/ItemCard';
 import { BasicPill, TypePill } from './components/pills/BasicPill';
 import ItemPill from './components/pills/ItemPill';
+import Item from '../shared/interface/ItemInterface';
 
 // function Hello() {
 //   // useSocket({
@@ -27,18 +27,8 @@ import ItemPill from './components/pills/ItemPill';
 //   //   },
 //   // });
 
-const myarray = new Array(10).fill(null);
-
-interface Pizza {
-  id: string;
-  title: string;
-  price: number;
-  slug: string;
-  categorie: string;
-}
-
 function Hello() {
-  const [items, setItems] = useState<Pizza[]>([]);
+  const [items, setItems] = useState<Item[]>([]);
 
   const callItem = () => {
     window.electron.ipcRenderer.sendMessage('getPizza');
@@ -90,8 +80,14 @@ function Hello() {
                 <CircularProgress size={100} />
               </Box>
             ) : (
-              items.map((value,index) => (
-                <Box key={value.slug} sx={{ animation: `0.7s popup ${0.1+((index)/10)*2}s forwards`,scale:0 }}>
+              items.map((value, index) => (
+                <Box
+                  key={value.slug}
+                  sx={{
+                    animation: `0.7s popup ${0.1 + (index / 10) * 2}s forwards`,
+                    scale: 0,
+                  }}
+                >
                   <ItemCard key={value.slug} item={value} />
                 </Box>
               ))

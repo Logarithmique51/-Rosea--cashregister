@@ -5,7 +5,8 @@
       "title": "La Jardinière",
       "price": 10.90,
       "slug": "la-jardiniere",
-      "categorie": "pizza"
+      "categorie": "pizza",
+      "variant" : [1]
     },
     {
       "id": "2",
@@ -172,6 +173,18 @@
     }
 
   ],
+  "option": [
+    {
+      "id":1,
+      "title":"Pizza",
+      "items": [1,2,3,4,5,6,7,8,9,10]
+    },
+    {
+      "id":2,
+      "title":"Pizza",
+      "items": [1,2,3,4,5,6,7,8,9,10]
+    }
+  ],
   "variant_option" : [
     {
       "id" : 1,
@@ -189,18 +202,6 @@
       "id" : 1,
       "title" : "Taille",
       "options" : [1,2]
-    }
-  ],
-  "option": [
-    {
-      "id":1,
-      "title":"Pizza",
-      "items": [1,2,3,4,5,6,7,8,9,10]
-    },
-    {
-      "id":2,
-      "title":"Pizza",
-      "items": [1,2,3,4,5,6,7,8,9,10]
     }
   ]
 }

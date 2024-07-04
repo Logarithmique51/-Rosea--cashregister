@@ -16,6 +16,7 @@ import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 import './websockets/init';
 import axios from 'axios';
+import Item from '../shared/interface/ItemInterface';
 
 class AppUpdater {
   constructor() {
@@ -33,13 +34,7 @@ ipcMain.on('ipc-example', async (event, arg) => {
   event.reply('ipc-example', msgTemplate('pong'));
 });
 
-interface Pizza {
-  id: string;
-  title: string;
-  price: number;
-  slug: string;
-  categorie: string;
-}
+
 
 interface Menu {
   id:number;
@@ -67,7 +62,7 @@ function shuffle(array) {
 
 ipcMain.on('getPizza', async (event) => {
   try {
-    const response = await axios.get<Pizza[]>('http://localhost:3000/item');
+    const response = await axios.get<Item[]>('http://localhost:3000/item');
     const itemarray = response.data;
     shuffle(itemarray);
     event.reply('getPizza', response.data);
